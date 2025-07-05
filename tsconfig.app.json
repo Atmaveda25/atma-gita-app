@@ -1,0 +1,13 @@
+{
+  "compilerOptions": {
+    "module": "ESNext",
+    "target": "ES2020",
+    "esModuleInterop": true,
+    "allowSyntheticDefaultImports": true,
+    "jsx": "react-jsx",
+    "moduleResolution": "Node",
+    "allowImportingTsExtensions": false,  // or remove `.tsx` in import path
+    "skipLibCheck": true
+  },
+  "include": ["src"]
+}

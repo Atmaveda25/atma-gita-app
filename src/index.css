@@ -1,0 +1,150 @@
+@keyframes rotate-bg {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Reset */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  font-family: 'Inter', sans-serif;
+  color: #e0dbff;
+  background-color: black;
+  overflow: hidden;
+}
+
+/* Mandala stays outside route transitions */
+.mandala-background {
+  position: fixed;
+  inset: 0;
+  background-image: url('/mandala-cosmic.png');
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0.35;
+  animation: rotate-bg 120s linear infinite;
+  z-index: 0;
+  pointer-events: none;
+  will-change: transform;
+}
+
+/* Wrapper for routed components */
+.screen {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  justify-content: center;
+  align-items: center;
+  padding: 1.5rem;
+  z-index: 1;
+}
+
+/* Content block with animated entry and blur background */
+.content {
+  z-index: 2;
+  max-width: 90%;
+  width: 100%;
+  padding: 4rem 4rem;
+  text-align: center;
+  animation: fadeIn 0.6s ease-out both;
+  background: linear-gradient(to bottom, rgba(0, 0, 0, 0.65), rgba(0, 0, 0, 0.45));
+  backdrop-filter: blur(6px);
+  border-radius: 12px;
+  box-shadow: 0 0 30px rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .screen {
+    flex-direction: row;
+  }
+
+  .content {
+    max-width: 450px;
+    margin: auto;
+  }
+}
+
+.verse-id {
+  font-size: 0.9rem;
+  opacity: 0.75;
+  text-transform: uppercase;
+  color: #f7f4ff;
+  margin-bottom: 0.5rem;
+}
+
+.sanskrit {
+  font-size: 1.6rem;
+  font-family: 'Noto Serif Devanagari', serif;
+  font-weight: 500;
+  line-height: 2.4rem;
+  color: #cdbbff;
+}
+
+.translation {
+  font-size: 1rem;
+  opacity: 0.8;
+  font-style: italic;
+  color: #cdbbff;
+}
+
+.meaning {
+  background-color: rgba(255, 255, 255, 0.07);
+  border-radius: 10px;
+  padding: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+  color: #cdbbff;
+  box-shadow: 0 0 10px rgba(255, 224, 130, 0.2);
+}
+
+button.primary {
+  background: linear-gradient(90deg, #8a63f8, #d08bff);
+  box-shadow: 0 0 12px rgba(216, 173, 255, 0.4);
+  color: #fff;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  max-width: 300px;
+  margin: 0 auto;
+}
+
+button.primary:hover {
+  transform: scale(1.04);
+  box-shadow: 0 0 16px rgba(216, 173, 255, 0.6);
+}
+
+.dots {
+  margin-top: 1rem;
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 100%;
+  background: #b5b5b531;
+}
+
+.dot.active {
+  background: #9d8cff;
+}
